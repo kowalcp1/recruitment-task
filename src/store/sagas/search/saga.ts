@@ -8,10 +8,10 @@ import * as actions from '../../actions';
 import * as ActionTypes from '../../actions/search/actionTypes';
 
 // @ts-ignore
-export function* searchByName(action)  {
-    const {searchText} = action.payload;
+export function* searchByName(action) {
+    const { searchText } = action.payload;
     try {
-        const resp: AxiosResponse<any> = yield axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&t=${searchText}`);
+        const resp: AxiosResponse<any> = yield axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${searchText}`);
         yield put(actions.searchByNameSucceeded(resp.data));
         yield call(resolvePromiseAction, action)
     } catch (err) {
